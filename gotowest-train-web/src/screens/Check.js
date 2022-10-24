@@ -26,7 +26,12 @@ export default function Check() {
         </div>
 
         <div className='btnContainer'>
-          <Link to={`/traindetail/${p.id}`} state={{p:p}} >
+          {/* <Link to={`/traindetail/${p.id}`} state={{p:p}} >
+            <div className='btnY'>
+              <p className='bl'>예</p>
+            </div>
+          </Link> */}
+          <Link to={`/description/${p.id}`} state={{p:p}} >
             <div className='btnY'>
               <p className='bl'>예</p>
             </div>

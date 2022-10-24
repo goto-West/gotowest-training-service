@@ -22,7 +22,7 @@ export default function Choose() {
   return (
     <div>
       {isReady && (
-        <div className='container'>
+        <div className='ccontainer'>
           <div className='display'>
             <h1 className='chooseText'>프로그램 둘러보기👀</h1>
             <div className='ptcontainer'>
