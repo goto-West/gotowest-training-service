@@ -5,7 +5,7 @@ import Webcam from "react-webcam";
 import { drawKeypoints, drawSkeleton } from "../utilities";
 import { useLocation } from "react-router-dom";
 
-//1. check 페이지에서 선택한 프로그램 데이터를 받아온다.
+//1. check 페이지에서 선택한 프로그램 데이터를 받아온다.                                                     
 //2. 프로그램 포즈 갯수만큼 반복된다. (*5개를 기준으로 진행한다.)
 //3. 각 반복은 포즈 유지 시간(*5초로 설정) 만큼 진행된다. 
     //이 반복에선 posenet을 통해 skeletion array를 뽑아내어, state에 저장을 하게 된다. 

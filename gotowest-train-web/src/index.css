@@ -176,12 +176,13 @@ ul,li {
   font-weight: bold;
   padding-top: 50px;
   padding-bottom: 30px;
-  font-family: Jalnan;
+  /* font-family: Jalnan; */
+  font-family: GodoM;
 }
 
 .chooseText{
   font-size: 30px;
-  font-family: Jalnan;
+  font-family: GodoM;
   text-align: left;
   margin: 20px;
 }
@@ -197,7 +198,7 @@ ul,li {
   width: 300px;
   height: 80px;
   font-size: 40px;
-  font-family: Jalnan;
+  font-family: GodoM;
   color: white;
   font-weight: bold;
   border-radius: 10px;
@@ -227,7 +228,7 @@ ul,li {
   display:block;
   text-align: left;
   margin: 10px;
-  font-family: Jalnan;
+  font-family: GodoM;
   font-size: 15px;
 }
 
@@ -254,7 +255,7 @@ ul,li {
 }
 
 .cd {
-  font-family: Jalnan;
+  font-family: GodoM;
   color: white;
   font-size: 30px;
   text-align: left;
@@ -265,7 +266,7 @@ ul,li {
 }
 
 .pc {
-  font-family: Jalnan;
+  font-family: GodoM;
   color: white;
   font-size: 25px;
   text-align: left;
@@ -278,7 +279,7 @@ ul,li {
 .btnY {
   width: 100px;
   height: 100px;
-  font-family: Jalnan;
+  font-family: GodoM;
   background-color: #A6C4FF;
   border-radius: 100px;
   margin: 20px;
@@ -287,7 +288,7 @@ ul,li {
 .btnN {
   width: 100px;
   height: 100px;
-  font-family: Jalnan;
+  font-family: GodoM;
   background-color: #FFA6A6;
   border-radius: 100px;
   margin: 20px;
@@ -321,7 +322,7 @@ ul,li {
 .menu {
   display: flex;
   justify-content: space-between;
-  font-family: Jalnan;
+  font-family: GodoM;
 }
 
 .menu-item {

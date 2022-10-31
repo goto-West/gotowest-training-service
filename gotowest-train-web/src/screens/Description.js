@@ -6,17 +6,11 @@ import Movenet from "../components/description/Movenet";
 import Pose from "../components/description/Pose";
 import Script from "../components/description/Script";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { aDataAtom, bDataAtom, cDataAtom, dDataAtom } from "../atoms";
+import { aAngleAtom, aDataAtom, bAngleAtom, bDataAtom, cAngleAtom, cDataAtom, dAngleAtom, dDataAtom } from "../atoms";
 
 export default function Description() {
   const location = useLocation(); 
     const p = location.state.p;  
-
-    const aSkeletonData = useRecoilValue(aDataAtom);
-    const bSkeletonData = useRecoilValue(bDataAtom);
-    const cSkeletonData = useRecoilValue(cDataAtom);
-    const dSkeletonData = useRecoilValue(dDataAtom);
-
     const [isScriptVisible, setIsScriptVisible] = useState(true); 
     const [isMidVisible, setIsMidVisible] = useState(false); 
     const [isPoseAVisible, setIsPoseAVisible] = useState(false);
@@ -62,11 +56,26 @@ export default function Description() {
       }, 50000);
 
       setTimeout(function() { //50초~60초  (자세3)
-        setIsPoseDVisible(false);
+        setIsPoseDVisible(false);        
         setIsDoneVisible(true);
       }, 60000);
 
+      
+      /*
+      if(isDoneVisible){ //모든 운동이 다 끝나면 각도변환값 저장
+        aSkeletonData.map(x=>
+          setAAngle(last=>[...last,getAngle(x.keypoints)]));
+        bSkeletonData.map(x=>
+          setBAngle(last=>[...last,getAngle(x.keypoints)]));
+        cSkeletonData.map(x=>
+          setCAngle(last=>[...last,getAngle(x.keypoints.position)]));
+        dSkeletonData.map(x=>
+          setDAngle(last=>[...last,getAngle(x.keypoints.position)]));
+      }
+      */
+      
     }, []);
+
     //임시 데이터로 진행 
     const [programDetail, setProgramDetial] = useState(
         {
@@ -75,21 +84,25 @@ export default function Description() {
             pose:[ //pose detail 
                 {
                     name:"위로 손깍지",
+                    ename:"arm_stretch_up",
                     description:"양손을 깍지껴 머리위로 올려보아요",
                     image:"../assets/left_side_stretch_sample.gif"
                 },
                 {
                     name:"왼쪽 옆구리 스트레칭",
+                    ename:"left_side_stretch",
                     description:"양손을 깍지 껴 머리위로 뻗고, 왼쪽 옆구리를 굽혀보아요",
                     image:"../assets/left_side_stretch_sample.gif"
                 },
                 {
                     name:"오른쪽 옆구리 스트레칭",
+                    ename:"right_side_stretch",
                     description:"양손을 깍지 껴 머리위로 뻗고, 왼쪽 옆구리를 굽혀보아요",
                     image:"../assets/left_side_stretch_sample.gif"
                 },
                 {
                     name:"만세",
+                    ename:"hurray",
                     description:"양손을 머리위로 쭉 뻗어주세요.",
                     image:"../assets/left_side_stretch_sample.gif"
                 }
@@ -101,7 +114,9 @@ export default function Description() {
         <div className="container">
           <div className="display">
             <div>
-              {isScriptVisible&&<Script></Script>}
+              {isScriptVisible&&
+                <Script></Script>
+              }              
             </div>
 
             <div>
@@ -112,7 +127,7 @@ export default function Description() {
               {isPoseAVisible&&
               <div>
                 <Pose name={programDetail.pose[0].name} description={programDetail.pose[0].description}></Pose>
-                <Movenet type="A"></Movenet>
+                <Movenet type="A" ename={programDetail.pose[0].ename}></Movenet>
               </div>
               }
             </div>
@@ -121,7 +136,7 @@ export default function Description() {
               {isPoseBVisible&&
               <div>
                 <Pose name={programDetail.pose[1].name} description={programDetail.pose[1].description}></Pose>
-                <Movenet type="B"></Movenet>
+                <Movenet type="B" ename={programDetail.pose[1].ename}></Movenet>
               </div>
               }
             </div>
@@ -130,7 +145,7 @@ export default function Description() {
               {isPoseCVisible&&
               <div>
                 <Pose name={programDetail.pose[2].name} description={programDetail.pose[2].description}></Pose>
-                <Movenet type="C"></Movenet>
+                <Movenet type="C" ename={programDetail.pose[2].ename}></Movenet>
               </div>
               }
             </div>
@@ -139,7 +154,7 @@ export default function Description() {
               {isPoseDVisible&&
               <div>
                 <Pose name={programDetail.pose[3].name} description={programDetail.pose[3].description}></Pose>
-                <Movenet type="D"></Movenet>
+                <Movenet type="D" ename={programDetail.pose[3].ename}></Movenet>
               </div>
               }
             </div>

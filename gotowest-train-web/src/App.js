@@ -11,7 +11,7 @@ import Description from "./screens/Description";
 import Score from "./screens/Score";
 import Movenet from "./components/description/Movenet";
 import { useRecoilValue } from "recoil";
-import { aDataAtom, bDataAtom, cDataAtom, dDataAtom } from "./atoms";
+import { aDataAtom, bDataAtom, cDataAtom, dDataAtom, aAngleAtom, bAngleAtom, cAngleAtom, dAngleAtom } from "./atoms";
 
 function App() {
   
@@ -19,6 +19,11 @@ function App() {
   const bSkeletonData = useRecoilValue(bDataAtom);
   const cSkeletonData = useRecoilValue(cDataAtom);
   const dSkeletonData = useRecoilValue(dDataAtom);
+
+  const aAngleData = useRecoilValue(aAngleAtom);
+  const bAngleData = useRecoilValue(bAngleAtom);
+  const cAngleData = useRecoilValue(cAngleAtom);
+  const dAngleData = useRecoilValue(dAngleAtom);
 
   return (
     <div>

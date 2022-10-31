@@ -12,8 +12,9 @@ export default function Movenet(props) {
     const cSkeletonData = useRecoilValue(cDataAtom);
     const dSkeletonData = useRecoilValue(dDataAtom);
 
-    console.log("movenet component");
-    console.log(props.type); 
+    // console.log("movenet component");
+    // console.log(props.type); 
+    //props.ename (전달된 포즈 영어 분류)
 
     const setAState = useSetRecoilState(aDataAtom);
     const setBState = useSetRecoilState(bDataAtom);
@@ -52,6 +53,10 @@ export default function Movenet(props) {
           // Make Detections
           const pose = await net.estimateSinglePose(video);
 
+          //획득한 데이터로 바로 angle_extraction 돌리기
+          //돌리고 난 뒤 모델에 또 돌리기 
+          //모델에 돌리고 난 뒤 최종 결과를 전달 및 표기 
+          
           // 분기 
           if(props.type=="A"){
             setAState(x=>[...x,pose]);
@@ -66,7 +71,7 @@ export default function Movenet(props) {
           // console.log(pose);
         }
     };
-
+  
     runPosenet(); 
 
   return (
