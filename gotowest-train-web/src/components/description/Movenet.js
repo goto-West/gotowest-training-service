@@ -3,7 +3,7 @@ import * as tf from "@tensorflow/tfjs";
 import * as posenet from "@tensorflow-models/posenet";
 import Webcam from "react-webcam";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { aDataAtom, bDataAtom, cDataAtom, dDataAtom } from "../../atoms";
+import { aDataAtom, bDataAtom, cDataAtom, dDataAtom, isAAtom, isBAtom, isCAtom, isDAtom } from "../../atoms";
 
 export default function Movenet(props) {
   
@@ -21,17 +21,22 @@ export default function Movenet(props) {
     const setCState = useSetRecoilState(cDataAtom);
     const setDState = useSetRecoilState(dDataAtom); 
 
+    const isAValue = useRecoilValue(isAAtom);
+    const isBValue = useRecoilValue(isBAtom);
+    const isCValue = useRecoilValue(isCAtom);
+    const isDValue = useRecoilValue(isDAtom); 
+
     const webcamRef = useRef(null);
     //  Load posenet
     const runPosenet = async () => {
         const net = await posenet.load({
-        inputResolution: { width: 1280, height: 720 },
+        inputResolution: { width: 720, height: 720 },
         scale: 0.1, //높일수록 정확도 향상, but 느려짐 
         });
         //
         setInterval(() => {
         detect(net);
-        }, 2000);   //시간 설정 가능 (몇초마다 detect할지) , 2초마다 디텍트 
+        }, 20000);   //시간 설정 가능 (몇초마다 detect할지)
     };
 
     //detect 
@@ -57,6 +62,7 @@ export default function Movenet(props) {
           //돌리고 난 뒤 모델에 또 돌리기 
           //모델에 돌리고 난 뒤 최종 결과를 전달 및 표기 
           
+          /*
           // 분기 
           if(props.type=="A"){
             setAState(x=>[...x,pose]);
@@ -67,6 +73,18 @@ export default function Movenet(props) {
           }else if(props.type=="D"){
             setDState(x=>[...x,pose]);
           }
+          */
+
+          //분기 (atom value를 사용한)
+          if(isAValue){
+            setAState(x=>[...x,pose]);
+          }else if(isBValue){
+            setBState(x=>[...x,pose]);
+          }else if(isCValue){
+            setCState(x=>[...x,pose]);
+          }else if(isDValue){
+            setDState(x=>[...x,pose]);
+          }
 
           // console.log(pose);
         }
@@ -75,23 +93,24 @@ export default function Movenet(props) {
     runPosenet(); 
 
   return (
-    <div className="container">
-        <div className="display">
-                    <Webcam
-                        ref={webcamRef}
-                        style={{
-                            position: "absolute",
-                            marginLeft: "auto",
-                            marginRight: "auto",
-                            left: 0,
-                            right: 0,
-                            textAlign: "center",
-                            zindex: 9,
-                            width: 1280,
-                            height: 720,
-                        }}
-                    />
-        </div>
+    <div>
+      <Webcam
+        ref={webcamRef}
+          style={{
+            position: "absolute",
+            marginLeft: "auto",
+            marginRight: "auto",
+            left: 0,
+            right: 0,
+            textAlign: "center",
+            zindex: 9,
+            // width: 1280,
+            width: 720,
+            height: 720,
+            opacity: 0, //화면단에선 카메라 숨기기 
+            }}
+        />
+
     </div>
   )
 }

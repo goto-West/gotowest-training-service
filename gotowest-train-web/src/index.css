@@ -150,47 +150,74 @@ ul,li {
   list-style: none;
 }
 
-.ccontainer {
-  text-align: center;
-  background-color: black;
-  /* height:100vh; */
-}
-
 .container {
   text-align: center;
   background-color: black;
-  height:100vh;
+  /* height:100vh; */
+  height: 1496px; 
+  font-family: GodoM;
 }
 
 .display {
   display: inline-block;
-  width: 500px;
-  /* height: 100%; */
+  /* width: 500px; */
+  margin-top: 50px;
+  margin-bottom: 30px;
+  width: 750px;
+  border: 15px solid #FEE550;
+  border-radius: 200px;
+  height: 1400px;
   /* min-height: 100%; */
   background-color: black;
   color: white;
+  /* margin-top: 80px; */
+  font-family: GodoM;
 }
 
 .homeText {
-  font-size: 50px;
+  font-size: 65px;
   font-weight: bold;
-  padding-top: 50px;
-  padding-bottom: 30px;
-  /* font-family: Jalnan; */
+  padding-top: 120px;
+  padding-bottom: 50px;
   font-family: GodoM;
+  margin-top: 80px;
 }
 
-.chooseText{
-  font-size: 30px;
+.chooseContainer {
+  margin-left: 130px;
+}
+
+.checkContainer {
+  margin-left: 130px;
+}
+
+.scriptContainer {
+  margin-left: 60px;
+}
+
+.middleContainer {
+  margin-left: 100px;
+}
+
+.doneContainer {
+  margin-left: 60px;
+  margin-bottom: 50px;
+}
+
+
+
+.chooseText {
+  font-size: 40px;
   font-family: GodoM;
   text-align: left;
-  margin: 20px;
+  margin-top: 80px;
+  margin-bottom: 30px;
 }
 
 .logoImg {
   width: 300px;
   height: 300px;
-  margin: 20px;
+  margin: 40px;
 }
 
 .startBtn {
@@ -216,6 +243,7 @@ ul,li {
   border-radius: 10px;
   display:flex;
   margin: 10px;
+  margin-bottom: 15px;
   color:white;
 }
 
@@ -257,12 +285,35 @@ ul,li {
 .cd {
   font-family: GodoM;
   color: white;
-  font-size: 30px;
+  font-size: 40px;
   text-align: left;
   padding-top: 40px;
   padding-left: 10px;
   padding-bottom: 30px;
-  line-height: 40px;
+  line-height: 60px;
+  margin-top: 80px;
+}
+
+.cdcenter {
+  color: white;
+  font-size: 35px;
+  text-align: center;
+  line-height: 60px;
+  margin-top: 80px;
+  margin-bottom: 50px;
+  margin-left: -5%;
+}
+
+.cdcentermain {
+  font-size: 55px;
+  margin-top: 150px;
+  margin-bottom: 50px;
+}
+
+.helloImg {
+  width: 60%;
+  margin: 20px;
+  margin-left: -5%;
 }
 
 .pc {
@@ -277,8 +328,8 @@ ul,li {
 }
 
 .btnY {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   font-family: GodoM;
   background-color: #A6C4FF;
   border-radius: 100px;
@@ -286,8 +337,8 @@ ul,li {
 }
 
 .btnN {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   font-family: GodoM;
   background-color: #FFA6A6;
   border-radius: 100px;
@@ -297,12 +348,13 @@ ul,li {
 .btnContainer {
   display: flex;
   justify-content: center;
+  margin-top: 50px;
 }
 
 .bl {
   color: black;
-  font-size: 20px;
-  padding-top: 40px;
+  font-size: 30px;
+  padding-top: 45px;
 }
 
 .footerContainer {
@@ -343,4 +395,111 @@ ul,li {
 
 @media screen and (max-width: 480px) {
 
+}
+
+.react-audio-player {
+  /* display: none; */
+  /* visibility: hidden; */
+}
+
+.info_img {
+  width: 60%;
+  text-align: left;
+}
+
+.imgcon{  
+  position: relative;
+  margin-top: 80px;
+}
+
+.backimg{
+  width: 100%;
+}
+
+.backtext {
+  font-family: GodoM;
+  color: white;
+  font-size: 25px;
+  text-align: left;
+  line-height: 40px;
+  position: absolute;
+  top:80px;
+  margin-left: 65px;
+  /* margin-top: 80px; */
+}
+
+.mainimg {
+  /* position: absolute; */
+  margin-top: 800px;
+  width: 40%;
+}
+
+.bar { 
+  width: 80%;
+  margin-top: 80px;
+  margin-bottom: 70px;
+}
+
+.dt1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.dt2 {
+  font-size: 45px
+}
+
+.dt3Container {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 100px;
+}
+
+.dt3 {
+  font-size: 35px;
+  line-height: 50px;
+}
+
+.gifImg {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.backgroundImg{
+  /* z-index: 0; */
+  width: 100%;
+}
+
+.breakImg {
+  width: 40%;
+  margin: 50px;
+}
+
+.thanksImg {
+  width: 40%;
+  margin: 100px;
+}
+
+.scoreImg {
+  width: 40%;
+  margin: 30px;
+}
+
+
+.scoreDetail {
+  display: flex;
+  justify-content: space-between;
+  font-size: 30px;
+  line-height: 50px;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 20px;
+}
+
+.scoreContainer {
+  margin-top: 50px;
+}
+
+.resetBtnContainer {
+  margin-top: 50px;
 }

@@ -12,6 +12,9 @@ import Score from "./screens/Score";
 import Movenet from "./components/description/Movenet";
 import { useRecoilValue } from "recoil";
 import { aDataAtom, bDataAtom, cDataAtom, dDataAtom, aAngleAtom, bAngleAtom, cAngleAtom, dAngleAtom } from "./atoms";
+import Script from "./components/description/Script";
+import Middle from "./components/description/Middle";
+import Poseexample from "./components/description/Poseexample";
 
 function App() {
   
@@ -37,6 +40,9 @@ function App() {
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/score" element={<Score />} />
         <Route path='/movenet' element={<Movenet></Movenet>} />
+        <Route path='/script' element={<Script></Script>} />   
+        <Route path='/middle' element={<Middle></Middle>} />
+        <Route path='/poseexample' element={<Poseexample></Poseexample>} />
       </Routes>
     </div>
   );

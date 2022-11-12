@@ -41,3 +41,24 @@ export const dAngleAtom = atom({
     key: "dAngle",
     default: [],
 });
+
+export const isAAtom = atom({
+    key: "isA",
+    default: false,
+});
+
+export const isBAtom = atom({
+    key: "isB",
+    default: false, 
+}); 
+
+export const isCAtom = atom({
+    key: "isC", 
+    default: false, 
+}); 
+
+export const isDAtom = atom({
+    key: "isD",
+    default: false,
+}); 
+

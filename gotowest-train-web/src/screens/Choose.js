@@ -22,8 +22,13 @@ export default function Choose() {
   return (
     <div>
       {isReady && (
-        <div className='ccontainer'>
+        <div className='container'>
           <div className='display'>
+            <div className='chooseContainer'>
+            <audio
+                autoplay="autoplay"
+                src={require('../assets/audio/audio_1.mp3')}>
+            </audio>
             <h1 className='chooseText'>프로그램 둘러보기👀</h1>
             <div className='ptcontainer'>
               {programs.map((p)=>(
@@ -42,7 +47,8 @@ export default function Choose() {
                 </div>
               ))}
             </div>
-            <Footer></Footer>
+            </div>
+            {/* <Footer></Footer> */}
           </div>
         </div>
       )

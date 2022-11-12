@@ -6,7 +6,7 @@ import Movenet from "../components/description/Movenet";
 import Pose from "../components/description/Pose";
 import Script from "../components/description/Script";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { aAngleAtom, aDataAtom, bAngleAtom, bDataAtom, cAngleAtom, cDataAtom, dAngleAtom, dDataAtom } from "../atoms";
+import { aAngleAtom, aDataAtom, bAngleAtom, bDataAtom, cAngleAtom, cDataAtom, dAngleAtom, dDataAtom, isAAtom, isBAtom, isCAtom, isDAtom } from "../atoms";
 
 export default function Description() {
   const location = useLocation(); 
@@ -18,47 +18,81 @@ export default function Description() {
     const [isPoseCVisible, setIsPoseCVisible] = useState(false);
     const [isPoseDVisible, setIsPoseDVisible] = useState(false);
     const [isDoneVisible, setIsDoneVisible] = useState(false);
+  
+    const isAValue = useRecoilValue(isAAtom);
+    const isBValue = useRecoilValue(isBAtom);
+    const isCValue = useRecoilValue(isCAtom);
+    const isDValue = useRecoilValue(isDAtom); 
+
+    const setIsAState = useSetRecoilState(isAAtom);
+    const setIsBState = useSetRecoilState(isBAtom);
+    const setIsCState = useSetRecoilState(isCAtom);
+    const setIsDState = useSetRecoilState(isDAtom);
 
     useEffect(() => {
-      setTimeout(function() { //5초까지 설명문, 자세1시작 
+      setTimeout(function() { //10초까지 설명문+음성안내, 자세1시작 
         setIsScriptVisible(false); 
         setIsPoseAVisible(true);
-      }, 5000);
 
-      setTimeout(function() { //15초에 자세1 종료 
+        setIsAState(true);
+
+      }, 10000);
+
+      setTimeout(function() { //자세1 종료 
         setIsPoseAVisible(false);
         setIsMidVisible(true);
-      }, 15000);
 
-      setTimeout(function() { //20초부터 자세2 시작 
-        setIsMidVisible(false);
-        setIsPoseBVisible(true);
+        setIsAState(false);
+
       }, 20000);
 
-      setTimeout(function() { //30초에 자세2 종료 
-        setIsPoseBVisible(false);
-        setIsMidVisible(true);
+      setTimeout(function() { //자세2 시작 
+        setIsMidVisible(false);
+        setIsPoseBVisible(true);
+
+        setIsBState(true); 
+
       }, 30000);
 
-      setTimeout(function() { //35초에 자세3 시작 
+      setTimeout(function() { //자세2 종료 
+        setIsPoseBVisible(false);
+        setIsMidVisible(true);
+
+        setIsBState(false);
+
+      }, 40000);
+
+      setTimeout(function() { //자세3 시작 
         setIsMidVisible(false);
         setIsPoseCVisible(true);
-      }, 35000);
 
-      setTimeout(function() { //45초에 자세3 종료
-        setIsPoseCVisible(false);
-        setIsMidVisible(true);
-      }, 45000);
+        setIsCState(true);
 
-      setTimeout(function() { //50초에 자세4 시작 
-        setIsMidVisible(false);
-        setIsPoseDVisible(true);
       }, 50000);
 
-      setTimeout(function() { //50초~60초  (자세3)
+      setTimeout(function() { //자세3 종료
+        setIsPoseCVisible(false);
+        setIsMidVisible(true);
+
+        setIsCState(false);
+
+      }, 60000);
+
+      setTimeout(function() { //자세4 시작 
+        setIsMidVisible(false);
+        setIsPoseDVisible(true);
+
+        setIsDState(true);
+
+      }, 70000);
+
+      setTimeout(function() { //자세4 종료 
         setIsPoseDVisible(false);        
         setIsDoneVisible(true);
-      }, 60000);
+
+        setIsDState(false);
+
+      }, 80000);
 
       
       /*
@@ -113,12 +147,24 @@ export default function Description() {
     <div>
         <div className="container">
           <div className="display">
+            <audio
+              autoplay="autoplay"
+              src={require('../assets/audio/audio_3.mp3')}>
+            </audio>
             <div>
               {isScriptVisible&&
+              <div>
                 <Script></Script>
+              </div>
               }              
             </div>
-
+            
+            {/* 이때부터 movenet 모델은 계속 돌리고 있는다  */}
+            {/* 잠깐 꺼두기! */}
+            <div>
+              {!(isDoneVisible)&&<Movenet></Movenet>}
+            </div>
+             
             <div>
               {isMidVisible&&<Middle></Middle>}
             </div>
@@ -126,8 +172,8 @@ export default function Description() {
             <div>
               {isPoseAVisible&&
               <div>
-                <Pose name={programDetail.pose[0].name} description={programDetail.pose[0].description}></Pose>
-                <Movenet type="A" ename={programDetail.pose[0].ename}></Movenet>
+                <Pose name={programDetail.pose[0].name} description={programDetail.pose[0].description} order='첫'></Pose>
+                {/* <Movenet type="A" ename={programDetail.pose[0].ename}></Movenet> */}
               </div>
               }
             </div>
@@ -135,8 +181,8 @@ export default function Description() {
             <div>
               {isPoseBVisible&&
               <div>
-                <Pose name={programDetail.pose[1].name} description={programDetail.pose[1].description}></Pose>
-                <Movenet type="B" ename={programDetail.pose[1].ename}></Movenet>
+                <Pose name={programDetail.pose[1].name} description={programDetail.pose[1].description} order='두'></Pose>
+                {/* <Movenet type="B" ename={programDetail.pose[1].ename}></Movenet> */}
               </div>
               }
             </div>
@@ -144,8 +190,8 @@ export default function Description() {
             <div>
               {isPoseCVisible&&
               <div>
-                <Pose name={programDetail.pose[2].name} description={programDetail.pose[2].description}></Pose>
-                <Movenet type="C" ename={programDetail.pose[2].ename}></Movenet>
+                <Pose name={programDetail.pose[2].name} description={programDetail.pose[2].description} order='세'></Pose>
+                {/* <Movenet type="C" ename={programDetail.pose[2].ename}></Movenet> */}
               </div>
               }
             </div>
@@ -153,15 +199,15 @@ export default function Description() {
             <div>
               {isPoseDVisible&&
               <div>
-                <Pose name={programDetail.pose[3].name} description={programDetail.pose[3].description}></Pose>
-                <Movenet type="D" ename={programDetail.pose[3].ename}></Movenet>
+                <Pose name={programDetail.pose[3].name} description={programDetail.pose[3].description} order='네'></Pose>
+                {/* <Movenet type="D" ename={programDetail.pose[3].ename}></Movenet> */}
               </div>
               }
             </div>
 
             <div>
               {isDoneVisible&&
-                <Done></Done>
+                <Done programDetail={programDetail}></Done>
               }
             </div>          
           </div>

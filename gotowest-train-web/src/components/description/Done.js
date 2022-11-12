@@ -3,10 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { aAngleAtom, aDataAtom, bAngleAtom, bDataAtom, cAngleAtom, cDataAtom, dAngleAtom, dDataAtom } from '../../atoms';
 
-export default function Done() {
+export default function Done(props) {
     const navigate = useNavigate();
     const onClick = () => {
-        navigate("/score");
+        navigate("/score", {
+            state: {
+                programDetail: props.programDetail,
+            },
+        });
     };
     const aSkeletonData = useRecoilValue(aDataAtom);
     const bSkeletonData = useRecoilValue(bDataAtom);
@@ -22,8 +26,6 @@ export default function Done() {
     const setBAngle = useSetRecoilState(bAngleAtom);
     const setCAngle = useSetRecoilState(cAngleAtom);
     const setDAngle = useSetRecoilState(dAngleAtom);
-
-    console.log('Done component 시작');
 
     function ComputeAngle(a,b,c){
         var aa = Math.sqrt(Math.pow(a.x -c.x,2) + Math.pow(a.y - c.y ,2));
@@ -201,15 +203,20 @@ export default function Done() {
 
     },[]);
 
-
-    
-
   return (
     <div>
-        <div className='cd'>
-            <p>오늘의 운동이</p>
-            <p>종료되었습니다.</p>
-            <p>다음 버튼을 눌러주세요.</p>
+        <audio
+          autoplay="autoplay"
+          src={require('../../assets/audio/audio_5.mp3')}>
+        </audio>
+
+        <div className='doneContainer'>
+            <div className='cd'>
+                <p>수고하셨습니다!</p>
+                <p>오늘의 운동이 종료되었습니다.</p>
+                <p>다음 버튼을 눌러</p>
+                <p>오늘의 점수를 확인해주세요.</p>
+            </div>
         </div>
 
         <div>
@@ -217,6 +224,8 @@ export default function Done() {
                 다음
             </button>
         </div>
+
+        <img src={require('../../assets/thanks.png')} className='thanksImg'></img>
     </div>
     
   )

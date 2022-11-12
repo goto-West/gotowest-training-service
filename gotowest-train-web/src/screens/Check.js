@@ -6,12 +6,18 @@ export default function Check() {
     const params = useParams();
     const location = useLocation();
     const p = location.state.p; 
+    
   return (
     <div className='container'>
       <div className='display'>
-        {/* {params.programId} */}
+        <div className='checkContainer'>
+          {/* {params.programId} */}
+        <audio
+          autoplay="autoplay"
+          src={require('../assets/audio/audio_2.mp3')}>
+        </audio>
         <div className='cd'>
-          <p>해당 프로그램으로</p>
+          <p>해당 과정으로</p>
           <p>운동을</p>
           <p>진행하시겠습니까?</p>
         </div>
@@ -23,16 +29,17 @@ export default function Check() {
             <p className='pt'>소요 시간: {p.time}</p>
             <p className='pl'>진행자: {p.lecturer}</p>
           </div>
+        </div>        
+        {/* <Footer></Footer> */}
         </div>
-
         <div className='btnContainer'>
           {/* <Link to={`/traindetail/${p.id}`} state={{p:p}} >
             <div className='btnY'>
               <p className='bl'>예</p>
             </div>
           </Link> */}
-          <Link to={`/description/${p.id}`} state={{p:p}} >
-            <div className='btnY'>
+          <Link to={`/description/${p.id}`} state={{p:p}}>
+            <div className='btnY'> 
               <p className='bl'>예</p>
             </div>
           </Link>
@@ -42,10 +49,6 @@ export default function Check() {
             </div>
           </Link>
         </div>
-
-
-
-        <Footer></Footer>
       </div>
     </div>
   )
