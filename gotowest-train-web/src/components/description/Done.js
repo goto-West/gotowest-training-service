@@ -41,11 +41,6 @@ export default function Done(props) {
     const setCAngle = useSetRecoilState(cAngleAtom);
     const setDAngle = useSetRecoilState(dAngleAtom);
 
-    const [isAFinish, setIsAFinish] = useState(false);
-    const [isBFinish, setIsBFinish] = useState(false);
-    const [isCFinish, setIsCFinish] = useState(false);
-    const [isDFinish, setIsDFinish] = useState(false);
-
     function ComputeAngle(a,b,c){
         var aa = Math.sqrt(Math.pow(a.x -c.x,2) + Math.pow(a.y - c.y ,2));
         var bb = Math.sqrt(Math.pow(a.x -b.x,2) + Math.pow(a.y - b.y ,2));
@@ -63,13 +58,14 @@ export default function Done(props) {
       }
   
     // compute angle between three dots
+    //어떤 자세인지 라벨링 설정 : 매개변수로 pose_idx를 받아와 자세의 어떤 부위인지 확인
     function getAngle(array){
-        //어떤 자세인지 라벨링 설정 : 매개변수로 pose_idx를 받아와 자세의 어떤 부위인지 확인
-          
-          let angles = { 
-          ang1 : '', ang2 : '', ang3 : '', ang4 : '',  
-          ang5 : '', ang6 : '', ang7 : '', ang8 : ''
-          };
+
+        let angles = { 
+            ang1 : '', ang2 : '', ang3 : '', ang4 : '',  
+            ang5 : '', ang6 : '', ang7 : '', ang8 : ''
+            };
+  
           
           //angle 1 - right elow [8], right shoulder [6], right hip [12]
           angles.ang1 = ComputeAngle(array[8],array[6],array[12]);
@@ -168,36 +164,28 @@ export default function Done(props) {
 
         for(var i=0; i<aparts.length; i++){
             const temp = []; 
-            for(var j=0; j<8; j++){//angle은 8개 
-                temp.push(getAngle(aparts[i]));
-            }
+            temp.push(getAngle(aparts[i]));
             afinal.push(temp);
             setIsAFinish(true);
         }
 
         for(var i=0; i<bparts.length; i++){
             const temp = []; 
-            for(var j=0; j<8; j++){//angle은 8개 
-                temp.push(getAngle(bparts[i]));
-            }
+            temp.push(getAngle(bparts[i]));
             bfinal.push(temp);
             setIsBFinish(true);
         }
 
         for(var i=0; i<cparts.length; i++){
             const temp = []; 
-            for(var j=0; j<8; j++){//angle은 8개 
-                temp.push(getAngle(cparts[i]));
-            }
+            temp.push(getAngle(cparts[i]));
             cfinal.push(temp);
             setIsCFinish(true);
         }
 
         for(var i=0; i<dparts.length; i++){
             const temp = []; 
-            for(var j=0; j<8; j++){//angle은 8개 
-                temp.push(getAngle(dparts[i]));
-            }
+            temp.push(getAngle(dparts[i]));
             dfinal.push(temp);
             setIsDFinish(true);
         }
@@ -212,23 +200,26 @@ export default function Done(props) {
         if(isAFinish){
             console.log("A is finish!");
             //모델과 통신 코드 작성 (영서야 여기양)
+            Classification.IsClasificationLabel(afinal);
         }
 
         if(isBFinish){
             console.log("B is Finish!");
             //모델과 통신 코드 작성 (영서야 여기양)
+            Classification.IsClasificationLabel(bfinal);
         }
 
         if(isCFinish){
             console.log("C is Finish!");
             //모델과 통신 코드 작성 (영서야 여기양)
+            Classification.IsClasificationLabel(cfinal);
         }
 
         if(isDFinish){
             console.log("D is Finish!");
             //모델과 통신 코드 작성 (영서야 여기양)
+            Classification.IsClasificationLabel(dfinal);
         }
-
 
         /*
         aparts.map(x=>setAAngle(last => [...last, getAngle(x)]));
