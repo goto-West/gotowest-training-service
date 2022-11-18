@@ -13,6 +13,19 @@ export default function Done(props) {
             },
         });
     };
+
+    const labelA = props.programDetail.pose[0].ename; //자세1의 라벨 
+    const labelB = props.programDetail.pose[1].ename; //자세2의 라벨 
+    const labelC = props.programDetail.pose[2].ename; //자세3의 라벨 
+    const labelD = props.programDetail.pose[3].ename; //자세4의 라벨 
+    //console.log(labelA);
+    //console.log(labelB);
+
+    const [isAFinish,setIsAFinish] = useState(false);
+    const [isBFinish,setIsBFinish] = useState(false);
+    const [isCFinish,setIsCFinish] = useState(false);
+    const [isDFinish,setIsDFinish] = useState(false);
+
     const aSkeletonData = useRecoilValue(aDataAtom);
     const bSkeletonData = useRecoilValue(bDataAtom);
     const cSkeletonData = useRecoilValue(cDataAtom);
@@ -159,6 +172,7 @@ export default function Done(props) {
                 temp.push(getAngle(aparts[i]));
             }
             afinal.push(temp);
+            setIsAFinish(true);
         }
 
         for(var i=0; i<bparts.length; i++){
@@ -167,6 +181,7 @@ export default function Done(props) {
                 temp.push(getAngle(bparts[i]));
             }
             bfinal.push(temp);
+            setIsBFinish(true);
         }
 
         for(var i=0; i<cparts.length; i++){
@@ -175,6 +190,7 @@ export default function Done(props) {
                 temp.push(getAngle(cparts[i]));
             }
             cfinal.push(temp);
+            setIsCFinish(true);
         }
 
         for(var i=0; i<dparts.length; i++){
@@ -183,6 +199,7 @@ export default function Done(props) {
                 temp.push(getAngle(dparts[i]));
             }
             dfinal.push(temp);
+            setIsDFinish(true);
         }
 
         console.log('angle-----------------');
@@ -191,10 +208,27 @@ export default function Done(props) {
         console.log(cfinal);
         console.log(dfinal);
 
-        Classification.IsClasificationLabel(afinal[0]);
 
-        //자세1과 모델과의 통신 
-        //먼저 afinal 기반 유닛 계산
+        if(isAFinish){
+            console.log("A is finish!");
+            //모델과 통신 코드 작성 (영서야 여기양)
+        }
+
+        if(isBFinish){
+            console.log("B is Finish!");
+            //모델과 통신 코드 작성 (영서야 여기양)
+        }
+
+        if(isCFinish){
+            console.log("C is Finish!");
+            //모델과 통신 코드 작성 (영서야 여기양)
+        }
+
+        if(isDFinish){
+            console.log("D is Finish!");
+            //모델과 통신 코드 작성 (영서야 여기양)
+        }
+
 
         /*
         aparts.map(x=>setAAngle(last => [...last, getAngle(x)]));
