@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { aAngleAtom, aDataAtom, bAngleAtom, bDataAtom, cAngleAtom, cDataAtom, dAngleAtom, dDataAtom } from '../../atoms';
+import Classification from './Classification'
 
 export default function Done(props) {
     const navigate = useNavigate();
@@ -40,6 +41,11 @@ export default function Done(props) {
     const setCAngle = useSetRecoilState(cAngleAtom);
     const setDAngle = useSetRecoilState(dAngleAtom);
 
+    const [isAFinish, setIsAFinish] = useState(false);
+    const [isBFinish, setIsBFinish] = useState(false);
+    const [isCFinish, setIsCFinish] = useState(false);
+    const [isDFinish, setIsDFinish] = useState(false);
+
     function ComputeAngle(a,b,c){
         var aa = Math.sqrt(Math.pow(a.x -c.x,2) + Math.pow(a.y - c.y ,2));
         var bb = Math.sqrt(Math.pow(a.x -b.x,2) + Math.pow(a.y - b.y ,2));
@@ -59,8 +65,6 @@ export default function Done(props) {
     // compute angle between three dots
     function getAngle(array){
         //어떤 자세인지 라벨링 설정 : 매개변수로 pose_idx를 받아와 자세의 어떤 부위인지 확인
-          let label_idx = ['arm_stretch_up', 'arm_stretch_upper_right', 'hurray',
-                'raise_right_leg', 'side_stretch_left_leg',  ' right_side_stretch'];
           
           let angles = { 
           ang1 : '', ang2 : '', ang3 : '', ang4 : '',  
@@ -204,6 +208,7 @@ export default function Done(props) {
         console.log(cfinal);
         console.log(dfinal);
 
+
         if(isAFinish){
             console.log("A is finish!");
             //모델과 통신 코드 작성 (영서야 여기양)
@@ -223,6 +228,7 @@ export default function Done(props) {
             console.log("D is Finish!");
             //모델과 통신 코드 작성 (영서야 여기양)
         }
+
 
         /*
         aparts.map(x=>setAAngle(last => [...last, getAngle(x)]));

@@ -27,7 +27,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "spawn": "react-spawn"
   },
   "eslintConfig": {
     "extends": [
@@ -46,5 +47,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "react-spawn": "^0.0.10"
+  },
+  "browser":{
+    "child_process": false
+  }  
 }
