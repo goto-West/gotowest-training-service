@@ -41,11 +41,6 @@ export default function Done(props) {
     const setCAngle = useSetRecoilState(cAngleAtom);
     const setDAngle = useSetRecoilState(dAngleAtom);
 
-    const [isAFinish, setIsAFinish] = useState(false);
-    const [isBFinish, setIsBFinish] = useState(false);
-    const [isCFinish, setIsCFinish] = useState(false);
-    const [isDFinish, setIsDFinish] = useState(false);
-
     function ComputeAngle(a,b,c){
         var aa = Math.sqrt(Math.pow(a.x -c.x,2) + Math.pow(a.y - c.y ,2));
         var bb = Math.sqrt(Math.pow(a.x -b.x,2) + Math.pow(a.y - b.y ,2));
@@ -168,36 +163,28 @@ export default function Done(props) {
 
         for(var i=0; i<aparts.length; i++){
             const temp = []; 
-            for(var j=0; j<8; j++){//angle은 8개 
-                temp.push(getAngle(aparts[i]));
-            }
+            temp.push(getAngle(aparts[i]));
             afinal.push(temp);
             setIsAFinish(true);
         }
 
         for(var i=0; i<bparts.length; i++){
             const temp = []; 
-            for(var j=0; j<8; j++){//angle은 8개 
-                temp.push(getAngle(bparts[i]));
-            }
+            temp.push(getAngle(bparts[i]));
             bfinal.push(temp);
             setIsBFinish(true);
         }
 
         for(var i=0; i<cparts.length; i++){
             const temp = []; 
-            for(var j=0; j<8; j++){//angle은 8개 
-                temp.push(getAngle(cparts[i]));
-            }
+            temp.push(getAngle(cparts[i]));
             cfinal.push(temp);
             setIsCFinish(true);
         }
 
         for(var i=0; i<dparts.length; i++){
             const temp = []; 
-            for(var j=0; j<8; j++){//angle은 8개 
-                temp.push(getAngle(dparts[i]));
-            }
+            temp.push(getAngle(dparts[i]));
             dfinal.push(temp);
             setIsDFinish(true);
         }
