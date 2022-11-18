@@ -2,12 +2,15 @@ import React, { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { aAngleAtom, aDataAtom, bAngleAtom, bDataAtom, cAngleAtom, cDataAtom, dAngleAtom, dDataAtom } from '../../atoms';
+//import classification from "../components/description/classification";
+
 
 export default function Done() {
     const navigate = useNavigate();
     const onClick = () => {
         navigate("/score");
     };
+
     const aSkeletonData = useRecoilValue(aDataAtom);
     const bSkeletonData = useRecoilValue(bDataAtom);
     const cSkeletonData = useRecoilValue(cDataAtom);
@@ -34,7 +37,7 @@ export default function Done() {
       
         var ang = Math.acos(temp);
       
-        ang = ang*(180/Math.PI);
+        ang = ang * (180/Math.PI);
     
         // log 
         // log.info('angle ' + idx + ':', ang);
@@ -147,6 +150,8 @@ export default function Done() {
         const cfinal = [];
         const dfinal = []; 
 
+
+        // 각 자세 별 각도 추가
         for(var i=0; i<aparts.length; i++){
             const temp = []; 
             for(var j=0; j<8; j++){//angle은 8개 
@@ -179,6 +184,8 @@ export default function Done() {
             dfinal.push(temp);
         }
 
+
+        // log
         console.log('angle-----------------');
         console.log(afinal);
         console.log(bfinal);
@@ -200,8 +207,6 @@ export default function Done() {
         */
 
     },[]);
-
-
     
 
   return (
