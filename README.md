@@ -3,7 +3,7 @@
 컴퓨터공학종합설계 팀 <gotoWest>
 gotowest-training-service
 
-##팀 구성
+## 팀 구성
 컴퓨터공학과 강영서
 컴퓨터공학과 이가영
 컴퓨터공학과 최경서
