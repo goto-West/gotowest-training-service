@@ -10,6 +10,15 @@ gotowest-training-service
 
 ## 데모영상
 
+## 기능관련
+#### 1. pose classification<br>
+https://github.com/goto-West/pose_classification_API<br>
+#### 2. 데이터셋 구성<br>
+https://github.com/goto-West/angle-extraction-from-data<br>
+
+#### 3. Movenet <br>
+https://github.com/goto-West/movenet<br>
+
 
 ## 수정사항
 22.11.18 포즈 분류 모델 기능 추가 <br>
