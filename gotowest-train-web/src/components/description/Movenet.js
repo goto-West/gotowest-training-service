@@ -107,7 +107,7 @@ export default function Movenet(props) {
             // width: 1280,
             width: 720,
             height: 720,
-            opacity: 0, //화면단에선 카메라 숨기기 
+            //opacity: 0, //화면단에선 카메라 숨기기 
             }}
         />
 
