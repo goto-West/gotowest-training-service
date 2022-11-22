@@ -196,28 +196,30 @@ export default function Done(props) {
         console.log(cfinal);
         console.log(dfinal);
 
+        //debug 용 코드
+        Classification.IsClasificationLabel(afinal);
+        Classification.IsClasificationLabel(bfinal);
+        Classification.IsClasificationLabel(cfinal);
+        Classification.IsClasificationLabel(dfinal);
 
+        // 프레임 별 각도를 계산 완료 후 classification 진행
         if(isAFinish){
             console.log("A is finish!");
-            //모델과 통신 코드 작성 (영서야 여기양)
             Classification.IsClasificationLabel(afinal);
         }
 
         if(isBFinish){
             console.log("B is Finish!");
-            //모델과 통신 코드 작성 (영서야 여기양)
             Classification.IsClasificationLabel(bfinal);
         }
 
         if(isCFinish){
             console.log("C is Finish!");
-            //모델과 통신 코드 작성 (영서야 여기양)
             Classification.IsClasificationLabel(cfinal);
         }
 
         if(isDFinish){
             console.log("D is Finish!");
-            //모델과 통신 코드 작성 (영서야 여기양)
             Classification.IsClasificationLabel(dfinal);
         }
 
