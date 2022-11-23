@@ -24,9 +24,9 @@ function App() {
   const dSkeletonData = useRecoilValue(dDataAtom);
 
   const aAngleData = useRecoilValue(aAngleAtom);
-  //const bAngleData = useRecoilValue(bAngleAtom);
-  //const cAngleData = useRecoilValue(cAngleAtom);
-  //const dAngleData = useRecoilValue(dAngleAtom);
+  const bAngleData = useRecoilValue(bAngleAtom);
+  const cAngleData = useRecoilValue(cAngleAtom);
+  const dAngleData = useRecoilValue(dAngleAtom);
 
   return (
     <div>

@@ -202,14 +202,6 @@ export default function Done(props) {
         //console.log(cfinal);
         //console.log(dfinal);
 
-        //debug 용 코드
-        let result1 = IsClasificationLabel(afinal);
-
-        console.log('classification result-----------------');
-        //console.log(result1);
-        //Classification.IsClasificationLabel(bfinal);
-        //Classification.IsClasificationLabel(cfinal);
-        //Classification.IsClasificationLabel(dfinal);
 
         // 프레임 별 각도를 계산 완료 후 classification 진행
         /*
