@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { aAngleAtom, aDataAtom, bAngleAtom, bDataAtom, cAngleAtom, cDataAtom, dAngleAtom, dDataAtom } from '../../atoms';
-import Classification from './Classification'
+//import Classification from './Classification'
+
 
 export default function Done(props) {
     const navigate = useNavigate();
@@ -19,7 +20,6 @@ export default function Done(props) {
     const labelC = props.programDetail.pose[2].ename; //자세3의 라벨 
     const labelD = props.programDetail.pose[3].ename; //자세4의 라벨 
     //console.log(labelA);
-    //console.log(labelB);
 
     const [isAFinish,setIsAFinish] = useState(false);
     const [isBFinish,setIsBFinish] = useState(false);
@@ -95,7 +95,9 @@ export default function Done(props) {
           //log.info('return result', angles);
           
           return angles; 
-    }
+    }       
+
+    
 
     useEffect(()=>{
         const aparts = [];
@@ -114,6 +116,7 @@ export default function Done(props) {
             }
             aparts.push(temp);
         }
+        
     
         for(var i=0; i<bSkeletonData.length; i++){
             const temp = [];
@@ -151,11 +154,13 @@ export default function Done(props) {
             dparts.push(temp);
         }
 
+        
+
         console.log('parts----------------');
         console.log(aparts);
-        console.log(bparts);
-        console.log(cparts);
-        console.log(dparts);
+        //console.log(bparts);
+        //console.log(cparts);
+        //console.log(dparts);
         
         const afinal = [];
         const bfinal = [];
@@ -189,20 +194,25 @@ export default function Done(props) {
             dfinal.push(temp);
             setIsDFinish(true);
         }
+        
 
         console.log('angle-----------------');
         console.log(afinal);
-        console.log(bfinal);
-        console.log(cfinal);
-        console.log(dfinal);
+        //console.log(bfinal);
+        //console.log(cfinal);
+        //console.log(dfinal);
 
         //debug 용 코드
-        Classification.IsClasificationLabel(afinal);
-        Classification.IsClasificationLabel(bfinal);
-        Classification.IsClasificationLabel(cfinal);
-        Classification.IsClasificationLabel(dfinal);
+        let result1 = IsClasificationLabel(afinal);
+
+        console.log('classification result-----------------');
+        //console.log(result1);
+        //Classification.IsClasificationLabel(bfinal);
+        //Classification.IsClasificationLabel(cfinal);
+        //Classification.IsClasificationLabel(dfinal);
 
         // 프레임 별 각도를 계산 완료 후 classification 진행
+        /*
         if(isAFinish){
             console.log("A is finish!");
             Classification.IsClasificationLabel(afinal);
@@ -222,6 +232,8 @@ export default function Done(props) {
             console.log("D is Finish!");
             Classification.IsClasificationLabel(dfinal);
         }
+
+        */
 
         /*
         aparts.map(x=>setAAngle(last => [...last, getAngle(x)]));

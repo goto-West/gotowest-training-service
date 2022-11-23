@@ -46,6 +46,7 @@ export default function Description() {
 
       }, 20000);
 
+      
       setTimeout(function() { //자세2 시작 
         setIsMidVisible(false);
         setIsPoseBVisible(true);
@@ -93,8 +94,9 @@ export default function Description() {
         setIsDState(false);
 
       }, 80000);
-
       
+      
+      //원래 디폴트로 주석처리 되어있었음
       /*
       if(isDoneVisible){ //모든 운동이 다 끝나면 각도변환값 저장
         aSkeletonData.map(x=>

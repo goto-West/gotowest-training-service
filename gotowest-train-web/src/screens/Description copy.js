@@ -32,6 +32,7 @@ export default function Description() {
         setIsMidVisible(true);
       }, 15000);
 
+      
       setTimeout(function() { //20초부터 자세2 시작 
         setIsMidVisible(false);
         setIsPoseBVisible(true);
@@ -61,6 +62,7 @@ export default function Description() {
         setIsPoseDVisible(false);
         setIsDoneVisible(true);
       }, 60000);
+      
 
     }, []);
     //임시 데이터로 진행 
