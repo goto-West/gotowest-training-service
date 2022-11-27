@@ -9,24 +9,29 @@ import matplotlib.pyplot as plt
 # interpreter  python 3.7.2
 # filename = 'model_NBC.sav'
 # filename = '221105NBC.json'
-filename = '221105NBC_2.pkl'
+filename = './gotowest-train-api/221105NBC_2.pkl'
 loaded_model = jl.load(filename)
 
 
 # load models, test and return result
 def pose_classification (param) : 
 
-    angles = [param,]
-    result = loaded_model.predict(angles)
+    #2차원 배열 int 형으로 변환
+    list = []
+    for i in param : 
+        list.append(int(i))
 
-    #print(angles)
-    # #print(result)
+    angles = [list,]
+
+    result = loaded_model.predict(angles)
+    print(result)
     
     return result
 
 def main () :
     #get parameter
     ag = sys.argv[1:]
+    print(ag)
 
     result = pose_classification(ag)
     #print("result : "+ result)
