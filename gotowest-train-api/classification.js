@@ -1,19 +1,18 @@
 const { mainModule } = require('process');
 var spawn = require('child_process').spawn; 
 
-function isClasificationLabel(angles) {
+function isClassificationLabel(angles) {
 
     //debug 할 때는 arguments의 첫번째 값만 활용해서 계산해보도록 한다.
     //let argument = angles[0];
 
     let test_label;
+    console.log(angles);
 
     //test sample data
     let argument = [160, 145, 176, 164, 112, 72, 176, 176];
 
     console.log("workings in js");
-    console.log("first angles test");
-    console.log(" : " + argument);
 
     //load python 
     const pythonClassification 
@@ -39,4 +38,4 @@ function isClasificationLabel(angles) {
 }
 
 //debug
-isClasificationLabel();
+//isClasificationLabel();

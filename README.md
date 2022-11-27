@@ -45,6 +45,9 @@ https://github.com/vladmandic/movenet <br><br>
 2. 자세 분류 머신러닝 모델 <br>
 https://github.com/goto-West/pose_classification_API<br><br>
 
+3. 데이터셋 구성 <br>
+https://github.com/KangYoungSeo/movenet <br><br>
+
 
 ## 팀원
 컴퓨터공학과 강영서<br>
