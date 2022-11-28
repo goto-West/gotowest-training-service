@@ -6,13 +6,13 @@ app.use(express.json());
 var cors = require('cors');
 app.use(cors());
 
-const { mainModule } = require('process');
+const { mainModule, send } = require('process');
 var spawn = require('child_process').spawn; 
 
 //api
 //const classification = require('./gotowest-train-api/classification.js')
 
-app.listen(3000, function(){
+app.listen(3001, function(){
     console.log('listening on 3000')
 })
 
@@ -30,6 +30,7 @@ app.get('/classification', function(req,res){
     //load classification api
     result = isClassificationLabel(argument);
     console.log("result : " + result);
+    res.send(result);
 
 })
 

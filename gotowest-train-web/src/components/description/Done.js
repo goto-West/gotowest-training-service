@@ -198,11 +198,33 @@ export default function Done(props) {
 
         console.log('angle-----------------');
         console.log(afinal);
-        //console.log(bfinal);
-        //console.log(cfinal);
-        //console.log(dfinal);
 
+        //debug 용
 
+        let label
+
+        onclick = () => {
+            const resultbox = {
+                inText : result,
+            }
+        };
+        fetch("http://localhost:3001/classification",{
+            method : "post",
+            headers: {
+                "content-type" : "application/json"
+            },
+            body: JSON.stringify(resultbox),
+        })
+            .then((res) => res.json())
+            .then((json) => {
+                console.log(json);
+                this.setState({
+                    text: json.text,
+                });
+            });
+
+        });
+        // 완료 후 확인 코드
         // 프레임 별 각도를 계산 완료 후 classification 진행
         /*
         if(isAFinish){
