@@ -32,6 +32,7 @@ matplotlib 3.6.2 <br>
 
 
 ## 수정 사항
+11.28 React와 Express 연동 (React Done.js fetch 추가)
 11.26 server.js 내 classification 모델 추가 <br>
 11.23 백엔드 부분 분리, node.js로 구동 가능 <br>
 11.10 자세 분류 API 구성 <br>

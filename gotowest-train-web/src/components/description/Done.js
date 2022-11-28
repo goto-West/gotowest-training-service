@@ -201,11 +201,11 @@ export default function Done(props) {
 
         //debug 용
 
-        let label
+        let result_label;
 
         onclick = () => {
             const resultbox = {
-                inText : result,
+                inText : result_label,
             }
         };
         fetch("http://localhost:3001/classification",{
@@ -215,6 +215,7 @@ export default function Done(props) {
             },
             body: JSON.stringify(resultbox),
         })
+        //then() 메서드 : fetch가 서버에 응답한 후 동작
             .then((res) => res.json())
             .then((json) => {
                 console.log(json);
@@ -224,6 +225,7 @@ export default function Done(props) {
             });
 
         });
+
         // 완료 후 확인 코드
         // 프레임 별 각도를 계산 완료 후 classification 진행
         /*
