@@ -24,7 +24,10 @@ npm start<br><br>
 머신러닝 모델 로드 및 테스트 python 코드 fork<br>
 분류 결과 반환 <br>
 
-## 모듈 버전
+## Stack
+React <br>
+Node.js <br>
+Express <br>
 python 3.9 <br>
 joblib 1.2.0 <br>
 scikit-learn 1.1.0 <br>
@@ -32,7 +35,8 @@ matplotlib 3.6.2 <br>
 
 
 ## 수정 사항
-11.28 React와 Express 연동 (React Done.js fetch 추가)
+11.28 React와 Express 연동 (React Done.js fetch 추가)<br>
+React port : 3000   Express port :3001 <br>
 11.26 server.js 내 classification 모델 추가 <br>
 11.23 백엔드 부분 분리, node.js로 구동 가능 <br>
 11.10 자세 분류 API 구성 <br>
