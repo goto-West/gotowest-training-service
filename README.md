@@ -1,6 +1,7 @@
 # gotowest-training-service
-컴퓨터공학종합설계 2 <br>
-팀 goto:West
+<h3> 스마트미러를 활용한 노인 건강 증진 서비스 개발 프로젝트 </h3>
+2022년도 컴퓨터공학종합설계 <br>
+팀 goto:West <br>
 
 ## Installation
 git clone https://github.com/goto-West/gotowest-training-service.git
@@ -12,7 +13,7 @@ npm i<br>
 cd gotowest-train-web<br>
 npm i <br>
 
-## start
+## 🤚 HOW TO START
 cd .. <br>
 npm start<br><br> 
 
@@ -24,7 +25,7 @@ npm start<br><br>
 머신러닝 모델 로드 및 테스트 python 코드 fork<br>
 분류 결과 반환 <br>
 
-## Stack
+##  🛠 STACKS
 React <br>
 Node.js <br>
 Express <br>
