@@ -2,11 +2,11 @@
     "programs" : [
         {
             "id":"p1",
-            "name":"김계란 선생님과 함께하는 몸짱 근력운동",
-            "detail":"김계란 선생님과 부족한 근력을 채워봅시다",
+            "name":"강영서 선생님과 함께하는 몸짱 근력운동",
+            "detail":"강영서 선생님과 부족한 근력을 채워봅시다",
             "time":20,
             "level":3,
-            "lecturer":"김계란",
+            "lecturer":"강영서",
             "image":"https://img.insight.co.kr/static/2020/08/09/700/5vm846vg5o0j5aedpj42.jpg"
         },
         {
