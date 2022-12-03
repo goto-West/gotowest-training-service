@@ -5,6 +5,7 @@ import Middle from "../components/description/Middle";
 import Movenet from "../components/description/Movenet";
 import Pose from "../components/description/Pose";
 import Script from "../components/description/Script";
+import ClassificationTest from "../components/description/classification_test"
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { aAngleAtom, aDataAtom, bAngleAtom, bDataAtom, cAngleAtom, cDataAtom, dAngleAtom, dDataAtom, isAAtom, isBAtom, isCAtom, isDAtom } from "../atoms";
 
@@ -209,7 +210,8 @@ export default function Description() {
 
             <div>
               {isDoneVisible&&
-                <Done programDetail={programDetail}></Done>
+                /** */
+                <ClassificationTest programDetail={programDetail}></ClassificationTest>
               }
             </div>          
           </div>

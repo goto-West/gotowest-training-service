@@ -9,7 +9,7 @@ export default function classification_test(props) {
 
     //결과
     let poseResults;
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     let test = "경서";
 
     const labelA = 'arm'; //자세1의 라벨 
@@ -29,6 +29,7 @@ export default function classification_test(props) {
 
         const response 
             = await axios('http://localhost:3001/test', { angles: test, });
+            
         console.log(response.data);
 
         // score.js
@@ -40,6 +41,7 @@ export default function classification_test(props) {
         });
     };
 
+    
     
   return (
     <div>

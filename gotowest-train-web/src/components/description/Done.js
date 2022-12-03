@@ -11,8 +11,6 @@ export default function Done(props) {
     //결과
     let poseResults;
     const navigate = useNavigate();
-    let test = "경서";
-    
     
 
     const labelA = props.programDetail.pose[0].ename; //자세1의 라벨

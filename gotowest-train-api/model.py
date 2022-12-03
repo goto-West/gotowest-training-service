@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 # interpreter  python 3.7.2
 # filename = 'model_NBC.sav'
 # filename = '221105NBC.json'
-filename = './gotowest-train-api/221105NBC_2.pkl'
+filename = './gotowest-train-api/221203SVM.pkl'
 loaded_model = jl.load(filename)
 
 
