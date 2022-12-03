@@ -1,31 +1,38 @@
 const express = require('express')
 const path = require('path')
 const app = express()
-
-app.use(express.json());
 var cors = require('cors');
+const bodyParser = require('body-parser');
+const { mainModule, send } = require('process');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+
 app.use(cors());
 
-const { mainModule, send } = require('process');
+
+
 var spawn = require('child_process').spawn; 
 
 //api
 //const classification = require('./gotowest-train-api/classification.js')
 
 app.listen(3001, function(){
-    console.log('listening on 3000')
+    console.log('listening on 3001')
 })
 
-app.use(express.static(path.join(__dirname, 'gotowest-train-web/build')));
+//app.use(express.static(path.join(__dirname, 'gotowest-train-web/build')));
 
 //classification response
 
-app.get('/classification', function(req,res){
-    //unit test
-    console.log("classification request");
+app.get('/classification', async function(req,res){
 
+    //unit test
+    console.log("start");
+
+    let argument = await req;
     //test argument
-    let argument = [160, 145, 176, 164, 112, 72, 176, 176];
+    //let argument = [160, 145, 176, 164, 112, 72, 176, 176];
 
     //load classification api
     result = isClassificationLabel(argument);
@@ -34,11 +41,19 @@ app.get('/classification', function(req,res){
 
 })
 
+app.get('/test', function(req,res){
 
-//react router 
+    console.log (req);
+
+})
+
+
+//React.js router
+/* 
 app.get('*', function(req,res){
     res.sendFile(path.join(__dirname, 'gotowest-train-web/build/index.html'));
 })
+*/
 
 async function isClassificationLabel(angles) {
 
@@ -48,7 +63,8 @@ async function isClassificationLabel(angles) {
     let test_label;
     let argument = angles;
 
-    console.log("workings in js");
+    console.log("classification in js");
+    console.log(angles);
 
     //load python 
     const pythonClassification 
@@ -60,7 +76,7 @@ async function isClassificationLabel(angles) {
     console.log("pid : " + pythonClassification.pid.toString());
 
     pythonClassification.stdout.on('data', function(data) {
-        //console.log(data.toString());
+        console.log(data.toString());
         test_label = data.toString();
     })  
 
@@ -68,6 +84,8 @@ async function isClassificationLabel(angles) {
         console.log(data.toString());
     
     })   
+
+    console.log(test_label);
 
     return test_label;
    

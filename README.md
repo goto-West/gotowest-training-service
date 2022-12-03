@@ -8,6 +8,8 @@ git clone https://github.com/goto-West/gotowest-training-service.git
 
 ## Backend Configuration
 npm i<br>
+npm start<br>
+서버의 경우, http://localhost:3001 에 구동합니다. <br/>
 
 ## Frontend Configuration
 cd gotowest-train-web<br>
@@ -16,9 +18,11 @@ npm i <br>
 ## 🤚 HOW TO START
 cd .. <br>
 npm start<br><br> 
+클라이언트의 경우, http://localhost:3000 에 구동 <br/>
 
 
 ## 구조 및 기능 정리
+
 ### server.js
 서버 구동 및 React html 로드 <br>
 ### classification.js
@@ -27,8 +31,8 @@ npm start<br><br>
 
 ##  🛠 STACKS
 React <br>
-Node.js <br>
-Express <br>
+Node.js 18.12.1<br>
+Express 4.17.2<br>
 python 3.9 <br>
 joblib 1.2.0 <br>
 scikit-learn 1.1.0 <br>

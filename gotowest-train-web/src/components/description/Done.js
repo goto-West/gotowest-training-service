@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { aAngleAtom, aDataAtom, bAngleAtom, bDataAtom, cAngleAtom, cDataAtom, dAngleAtom, dDataAtom } from '../../atoms';
 //import Classification from './Classification'
+import axios from 'axios';
 
 
 export default function Done(props) {
-    const navigate = useNavigate();
-    const onClick = () => {
-        navigate("/score", {
-            state: {
-                programDetail: props.programDetail,
-            },
-        });
-    };
 
-    const labelA = props.programDetail.pose[0].ename; //자세1의 라벨 
-    const labelB = props.programDetail.pose[1].ename; //자세2의 라벨 
-    const labelC = props.programDetail.pose[2].ename; //자세3의 라벨 
-    const labelD = props.programDetail.pose[3].ename; //자세4의 라벨 
-    //console.log(labelA);
+    //결과
+    let poseResults;
+    const navigate = useNavigate();
+    let test = "경서";
+    
+    
+
+    const labelA = props.programDetail.pose[0].ename; //자세1의 라벨
+    const labelB = props.programDetail.pose[1].ename; //자세2의 라벨
+    const labelC = props.programDetail.pose[2].ename; //자세3의 라벨
+    const labelD = props.programDetail.pose[3].ename; //자세4의 라벨
 
     const [isAFinish,setIsAFinish] = useState(false);
     const [isBFinish,setIsBFinish] = useState(false);
@@ -41,6 +40,9 @@ export default function Done(props) {
     const setCAngle = useSetRecoilState(cAngleAtom);
     const setDAngle = useSetRecoilState(dAngleAtom);
 
+
+    //--------------------------------------------------------------------------
+
     function ComputeAngle(a,b,c){
         var aa = Math.sqrt(Math.pow(a.x -c.x,2) + Math.pow(a.y - c.y ,2));
         var bb = Math.sqrt(Math.pow(a.x -b.x,2) + Math.pow(a.y - b.y ,2));
@@ -52,10 +54,9 @@ export default function Done(props) {
       
         ang = ang*(180/Math.PI);
     
-        // log 
-        // log.info('angle ' + idx + ':', ang);
+        // log // log.info('angle ' + idx + ':', ang);
         return ang;
-      }
+    }
   
     // compute angle between three dots
     //어떤 자세인지 라벨링 설정 : 매개변수로 pose_idx를 받아와 자세의 어떤 부위인지 확인
@@ -95,11 +96,14 @@ export default function Done(props) {
           //log.info('return result', angles);
           
           return angles; 
+
     }       
 
+    //------------------------------------------------------------------------------------
     
 
     useEffect(()=>{
+
         const aparts = [];
         const bparts = [];
         const cparts = [];
@@ -155,10 +159,9 @@ export default function Done(props) {
         }
 
         
-
         console.log('parts----------------');
         console.log(aparts);
-        //console.log(bparts);
+        console.log(bparts);
         //console.log(cparts);
         //console.log(dparts);
         
@@ -195,7 +198,6 @@ export default function Done(props) {
             setIsDFinish(true);
         }
         
-
         console.log('angle-----------------');
         console.log(afinal);
 
@@ -203,28 +205,6 @@ export default function Done(props) {
 
         let result_label;
 
-        onclick = () => {
-            const resultbox = {
-                inText : result_label,
-            }
-        };
-        fetch("http://localhost:3001/classification",{
-            method : "post",
-            headers: {
-                "content-type" : "application/json"
-            },
-            body: JSON.stringify(resultbox),
-        })
-        //then() 메서드 : fetch가 서버에 응답한 후 동작
-            .then((res) => res.json())
-            .then((json) => {
-                console.log(json);
-                this.setState({
-                    text: json.text,
-                });
-            });
-
-        });
 
         // 완료 후 확인 코드
         // 프레임 별 각도를 계산 완료 후 classification 진행
@@ -264,8 +244,28 @@ export default function Done(props) {
         console.log(dAngleData); 
         */
 
+
     },[]);
 
+    //매개변수 e인 이벤트 함수 onClick?
+    const onClick = async(e) => {
+
+        const response 
+            = await axios('http://localhost:3001/classification', { angles: test, });
+        console.log(response.data);
+
+        // score.js
+        navigate("/score", {
+            state: {
+                programDetail: props.programDetail,
+                poseResults : poseResults,
+            },
+        });
+    };
+
+
+
+    
   return (
     <div>
         <audio
@@ -283,7 +283,7 @@ export default function Done(props) {
         </div>
 
         <div>
-            <button className='startBtn' onClick={onClick}>
+            <button className='startBtn' onClick={(event) => onClick(event)}>
                 다음
             </button>
         </div>
