@@ -18,8 +18,6 @@ export default function Done(props) {
     const labelB = props.programDetail.pose[1].ename; //자세2의 라벨 
     const labelC = props.programDetail.pose[2].ename; //자세3의 라벨 
     const labelD = props.programDetail.pose[3].ename; //자세4의 라벨 
-    //console.log(labelA);
-    //console.log(labelB);
 
     const [isAFinish,setIsAFinish] = useState(false);
     const [isBFinish,setIsBFinish] = useState(false);
@@ -103,6 +101,7 @@ export default function Done(props) {
         const cparts = [];
         const dparts = []; 
     
+        //posenet으로 부터 얻은 skeletondata 에서 x,y좌표만 추출 
         for(var i=0; i<aSkeletonData.length; i++){
             const temp = [];
             for(var j=0; j<17; j++){
@@ -151,12 +150,6 @@ export default function Done(props) {
             dparts.push(temp);
         }
 
-        console.log('parts----------------');
-        console.log(aparts);
-        console.log(bparts);
-        console.log(cparts);
-        console.log(dparts);
-        
         const afinal = [];
         const bfinal = [];
         const cfinal = [];
@@ -197,29 +190,29 @@ export default function Done(props) {
         console.log(dfinal);
 
 
-        if(isAFinish){
-            console.log("A is finish!");
-            //모델과 통신 코드 작성 (영서야 여기양)
-            Classification.IsClasificationLabel(afinal);
-        }
+        // if(isAFinish){
+        //     console.log("A is finish!");
+        //     //모델과 통신 코드 작성 (영서야 여기양)
+        //     Classification.IsClasificationLabel(afinal);
+        // }
 
-        if(isBFinish){
-            console.log("B is Finish!");
-            //모델과 통신 코드 작성 (영서야 여기양)
-            Classification.IsClasificationLabel(bfinal);
-        }
+        // if(isBFinish){
+        //     console.log("B is Finish!");
+        //     //모델과 통신 코드 작성 (영서야 여기양)
+        //     Classification.IsClasificationLabel(bfinal);
+        // }
 
-        if(isCFinish){
-            console.log("C is Finish!");
-            //모델과 통신 코드 작성 (영서야 여기양)
-            Classification.IsClasificationLabel(cfinal);
-        }
+        // if(isCFinish){
+        //     console.log("C is Finish!");
+        //     //모델과 통신 코드 작성 (영서야 여기양)
+        //     Classification.IsClasificationLabel(cfinal);
+        // }
 
-        if(isDFinish){
-            console.log("D is Finish!");
-            //모델과 통신 코드 작성 (영서야 여기양)
-            Classification.IsClasificationLabel(dfinal);
-        }
+        // if(isDFinish){
+        //     console.log("D is Finish!");
+        //     //모델과 통신 코드 작성 (영서야 여기양)
+        //     Classification.IsClasificationLabel(dfinal);
+        // }
 
         /*
         aparts.map(x=>setAAngle(last => [...last, getAngle(x)]));

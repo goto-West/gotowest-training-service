@@ -11,7 +11,6 @@ export default function Choose() {
     setIsReady(true);
   },[]);
 
-  //후에 벡앤드 연동 후 코드복구 
   // useEffect(()=>{
   //   const response = await fetch("http://localhost:8080/programs") // GET programs list  
   //   const json = await response.json();
@@ -35,7 +34,8 @@ export default function Choose() {
                 <div>
                   <Link to={`/check/${p.id}`} state={{p:p}} className='link'>
                     <div className='programContainer'>
-                        <img className="pimg" src={require('../assets/lecimgsample.png')}></img>
+                        {/* <img className="pimg" src={require('../assets/lecimgsample.png')}></img> */}
+                        <img className="pimg" src={p.image}></img>
                         <div className='pinfo'>
                           <p className='pn'>{p.name}</p>
                           <p className='pd'>설명: {p.detail}</p>

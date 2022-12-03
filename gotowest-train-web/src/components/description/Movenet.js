@@ -3,7 +3,7 @@ import * as tf from "@tensorflow/tfjs";
 import * as posenet from "@tensorflow-models/posenet";
 import Webcam from "react-webcam";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { aDataAtom, bDataAtom, cDataAtom, dDataAtom, isAAtom, isBAtom, isCAtom, isDAtom } from "../../atoms";
+import { aDataAtom, bDataAtom, cDataAtom, dDataAtom, isAAtom, isBAtom, isCAtom, isDAtom, isEAtom } from "../../atoms";
 
 export default function Movenet(props) {
   
@@ -25,6 +25,7 @@ export default function Movenet(props) {
     const isBValue = useRecoilValue(isBAtom);
     const isCValue = useRecoilValue(isCAtom);
     const isDValue = useRecoilValue(isDAtom); 
+    const isEValue = useRecoilValue(isEAtom);
 
     const webcamRef = useRef(null);
     //  Load posenet
@@ -82,11 +83,11 @@ export default function Movenet(props) {
             setBState(x=>[...x,pose]);
           }else if(isCValue){
             setCState(x=>[...x,pose]);
+          }else if(isEValue){
+            setDState(x=>[...x,pose]);
           }else if(isDValue){
             setDState(x=>[...x,pose]);
           }
-
-          // console.log(pose);
         }
     };
   
@@ -107,7 +108,7 @@ export default function Movenet(props) {
             // width: 1280,
             width: 720,
             height: 720,
-            //opacity: 0, //화면단에선 카메라 숨기기 
+            opacity: 0, //화면단에선 카메라 숨기기 
             }}
         />
 

@@ -248,7 +248,9 @@ ul,li {
 }
 
 .pimg {
+  width: 150px;
   height: 150px;
+  border-radius: 10px;
   display: block;
 }
 
@@ -461,8 +463,10 @@ ul,li {
 }
 
 .gifImg {
-  margin-top: 60px;
-  margin-bottom: 60px;
+  /* margin-top: 60px; */
+  margin-bottom: 30px;
+  width: 50%;
+  height: 50%;
 }
 
 .backgroundImg{

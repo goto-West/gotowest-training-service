@@ -1,6 +1,9 @@
 import React from 'react'
 
 export default function Pose(props) {
+  const ename = props.ename;
+  const imgAddress = '../../../src/assets/exercise_assets/'+ename+'.gif';
+
   return (
     <div>
       <div className='poseContainer'>
@@ -14,7 +17,9 @@ export default function Pose(props) {
         <p className='dt2'>{props.name}</p>
         <br/>
         
-        <img src={require('../../../src/assets/left_side_stretch_sample.gif')} className='gifImg'></img>
+        {/* <img src={require('../../../src/assets/left_side_stretch_sample.gif')} className='gifImg'></img> */}
+        <img src={require(`../../../src/assets/exercise_asset/${props.ename}.gif`)} className='gifImg'></img>
+
 
         <div className='dt3Container'>
           <p className='dt3'>{props.description}</p>

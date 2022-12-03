@@ -6,7 +6,7 @@ import Movenet from "../components/description/Movenet";
 import Pose from "../components/description/Pose";
 import Script from "../components/description/Script";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { aAngleAtom, aDataAtom, bAngleAtom, bDataAtom, cAngleAtom, cDataAtom, dAngleAtom, dDataAtom, isAAtom, isBAtom, isCAtom, isDAtom } from "../atoms";
+import { aAngleAtom, aDataAtom, bAngleAtom, bDataAtom, cAngleAtom, cDataAtom, dAngleAtom, dDataAtom, isAAtom, isBAtom, isCAtom, isDAtom, isEAtom } from "../atoms";
 
 export default function Description() {
   const location = useLocation(); 
@@ -28,6 +28,7 @@ export default function Description() {
     const setIsBState = useSetRecoilState(isBAtom);
     const setIsCState = useSetRecoilState(isCAtom);
     const setIsDState = useSetRecoilState(isDAtom);
+    const setIsEState = useSetRecoilState(isEAtom);
 
     useEffect(() => {
       setTimeout(function() { //10초까지 설명문+음성안내, 자세1시작 
@@ -82,6 +83,7 @@ export default function Description() {
         setIsMidVisible(false);
         setIsPoseDVisible(true);
 
+        setIsEState(true);
         setIsDState(true);
 
       }, 70000);
@@ -90,23 +92,10 @@ export default function Description() {
         setIsPoseDVisible(false);        
         setIsDoneVisible(true);
 
+        setIsEState(false);
         setIsDState(false);
 
       }, 80000);
-
-      
-      /*
-      if(isDoneVisible){ //모든 운동이 다 끝나면 각도변환값 저장
-        aSkeletonData.map(x=>
-          setAAngle(last=>[...last,getAngle(x.keypoints)]));
-        bSkeletonData.map(x=>
-          setBAngle(last=>[...last,getAngle(x.keypoints)]));
-        cSkeletonData.map(x=>
-          setCAngle(last=>[...last,getAngle(x.keypoints.position)]));
-        dSkeletonData.map(x=>
-          setDAngle(last=>[...last,getAngle(x.keypoints.position)]));
-      }
-      */
       
     }, []);
 
@@ -161,8 +150,11 @@ export default function Description() {
             
             {/* 이때부터 movenet 모델은 계속 돌리고 있는다  */}
             {/* 잠깐 꺼두기! */}
-            <div>
+            {/* <div>
               {!(isDoneVisible)&&<Movenet></Movenet>}
+            </div> */}
+            <div>
+              <Movenet></Movenet>
             </div>
              
             <div>
@@ -172,7 +164,7 @@ export default function Description() {
             <div>
               {isPoseAVisible&&
               <div>
-                <Pose name={programDetail.pose[0].name} description={programDetail.pose[0].description} order='첫'></Pose>
+                <Pose ename={programDetail.pose[0].ename} name={programDetail.pose[0].name} description={programDetail.pose[0].description} order='첫'></Pose>
                 {/* <Movenet type="A" ename={programDetail.pose[0].ename}></Movenet> */}
               </div>
               }
@@ -181,7 +173,7 @@ export default function Description() {
             <div>
               {isPoseBVisible&&
               <div>
-                <Pose name={programDetail.pose[1].name} description={programDetail.pose[1].description} order='두'></Pose>
+                <Pose ename={programDetail.pose[1].ename} name={programDetail.pose[1].name} description={programDetail.pose[1].description} order='두'></Pose>
                 {/* <Movenet type="B" ename={programDetail.pose[1].ename}></Movenet> */}
               </div>
               }
@@ -190,7 +182,7 @@ export default function Description() {
             <div>
               {isPoseCVisible&&
               <div>
-                <Pose name={programDetail.pose[2].name} description={programDetail.pose[2].description} order='세'></Pose>
+                <Pose ename={programDetail.pose[2].ename} name={programDetail.pose[2].name} description={programDetail.pose[2].description} order='세'></Pose>
                 {/* <Movenet type="C" ename={programDetail.pose[2].ename}></Movenet> */}
               </div>
               }
@@ -199,7 +191,7 @@ export default function Description() {
             <div>
               {isPoseDVisible&&
               <div>
-                <Pose name={programDetail.pose[3].name} description={programDetail.pose[3].description} order='네'></Pose>
+                <Pose ename={programDetail.pose[3].ename} name={programDetail.pose[3].name} description={programDetail.pose[3].description} order='네'></Pose>
                 {/* <Movenet type="D" ename={programDetail.pose[3].ename}></Movenet> */}
               </div>
               }

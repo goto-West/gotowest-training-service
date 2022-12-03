@@ -62,3 +62,7 @@ export const isDAtom = atom({
     default: false,
 }); 
 
+export const isEAtom = atom({
+    key: "isE", 
+    default: false, 
+}); 
