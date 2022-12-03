@@ -6,7 +6,7 @@ import Movenet from "../components/description/Movenet";
 import Pose from "../components/description/Pose";
 import Script from "../components/description/Script";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { aAngleAtom, aDataAtom, bAngleAtom, bDataAtom, cAngleAtom, cDataAtom, dAngleAtom, dDataAtom, isAAtom, isBAtom, isCAtom, isDAtom, isEAtom } from "../atoms";
+import { aAngleAtom, aDataAtom, bAngleAtom, bDataAtom, cAngleAtom, cDataAtom, dAngleAtom, dDataAtom, isAAtom, isBAtom, isCAtom, isDAtom } from "../atoms";
 
 export default function Description() {
   const location = useLocation(); 
@@ -28,7 +28,6 @@ export default function Description() {
     const setIsBState = useSetRecoilState(isBAtom);
     const setIsCState = useSetRecoilState(isCAtom);
     const setIsDState = useSetRecoilState(isDAtom);
-    const setIsEState = useSetRecoilState(isEAtom);
 
     useEffect(() => {
       setTimeout(function() { //10초까지 설명문+음성안내, 자세1시작 
@@ -83,7 +82,6 @@ export default function Description() {
         setIsMidVisible(false);
         setIsPoseDVisible(true);
 
-        setIsEState(true);
         setIsDState(true);
 
       }, 70000);
@@ -92,7 +90,6 @@ export default function Description() {
         setIsPoseDVisible(false);        
         setIsDoneVisible(true);
 
-        setIsEState(false);
         setIsDState(false);
 
       }, 80000);
@@ -149,13 +146,12 @@ export default function Description() {
             </div>
             
             {/* 이때부터 movenet 모델은 계속 돌리고 있는다  */}
-            {/* 잠깐 꺼두기! */}
-            {/* <div>
-              {!(isDoneVisible)&&<Movenet></Movenet>}
-            </div> */}
             <div>
-              <Movenet></Movenet>
+              {!(isDoneVisible)&&<Movenet></Movenet>}
             </div>
+            {/* <div>
+              <Movenet></Movenet>
+            </div> */}
              
             <div>
               {isMidVisible&&<Middle></Middle>}

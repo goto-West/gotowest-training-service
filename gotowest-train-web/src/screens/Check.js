@@ -22,8 +22,8 @@ export default function Check() {
           <p>진행하시겠습니까?</p>
         </div>
         <div className='programContainer'>
-          {/* <img className="pimg" src={require('../assets/lecimgsample.png')}></img> */}
-          <img className="pimg" src={p.image}></img>
+          <img className="pimg" src={require('../assets/lecimgsample.png')}></img>
+          {/* <img className="pimg" src={p.image}></img> */}
           <div className='pinfo'>
             <p className='pn'>{p.name}</p>
             <p className='pd'>설명: {p.detail}</p>

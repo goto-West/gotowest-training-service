@@ -63,19 +63,6 @@ export default function Movenet(props) {
           //돌리고 난 뒤 모델에 또 돌리기 
           //모델에 돌리고 난 뒤 최종 결과를 전달 및 표기 
           
-          /*
-          // 분기 
-          if(props.type=="A"){
-            setAState(x=>[...x,pose]);
-          }else if(props.type=="B"){
-            setBState(x=>[...x,pose]);
-          }else if(props.type=="C"){
-            setCState(x=>[...x,pose]);
-          }else if(props.type=="D"){
-            setDState(x=>[...x,pose]);
-          }
-          */
-
           //분기 (atom value를 사용한)
           if(isAValue){
             setAState(x=>[...x,pose]);
@@ -83,8 +70,6 @@ export default function Movenet(props) {
             setBState(x=>[...x,pose]);
           }else if(isCValue){
             setCState(x=>[...x,pose]);
-          }else if(isEValue){
-            setDState(x=>[...x,pose]);
           }else if(isDValue){
             setDState(x=>[...x,pose]);
           }

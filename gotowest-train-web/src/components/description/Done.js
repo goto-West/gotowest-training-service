@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { aAngleAtom, aDataAtom, bAngleAtom, bDataAtom, cAngleAtom, cDataAtom, dAngleAtom, dDataAtom } from '../../atoms';
-import Classification from './Classification'
 
 export default function Done(props) {
     const navigate = useNavigate();
@@ -50,8 +49,6 @@ export default function Done(props) {
       
         ang = ang*(180/Math.PI);
     
-        // log 
-        // log.info('angle ' + idx + ':', ang);
         return ang;
       }
   
@@ -88,10 +85,7 @@ export default function Done(props) {
         
           //angle 8 - left hip[11], left knee[13], left ankle[15]
           angles.ang8 = ComputeAngle(array[11],array[13],array[15]);
-        
-          //debug
-          //log.info('return result', angles);
-          
+               
           return angles; 
     }
 
@@ -159,28 +153,24 @@ export default function Done(props) {
             const temp = []; 
             temp.push(getAngle(aparts[i]));
             afinal.push(temp);
-            setIsAFinish(true);
         }
 
         for(var i=0; i<bparts.length; i++){
             const temp = []; 
             temp.push(getAngle(bparts[i]));
             bfinal.push(temp);
-            setIsBFinish(true);
         }
 
         for(var i=0; i<cparts.length; i++){
             const temp = []; 
             temp.push(getAngle(cparts[i]));
             cfinal.push(temp);
-            setIsCFinish(true);
         }
 
         for(var i=0; i<dparts.length; i++){
             const temp = []; 
             temp.push(getAngle(dparts[i]));
             dfinal.push(temp);
-            setIsDFinish(true);
         }
 
         console.log('angle-----------------');
@@ -188,44 +178,6 @@ export default function Done(props) {
         console.log(bfinal);
         console.log(cfinal);
         console.log(dfinal);
-
-
-        // if(isAFinish){
-        //     console.log("A is finish!");
-        //     //모델과 통신 코드 작성 (영서야 여기양)
-        //     Classification.IsClasificationLabel(afinal);
-        // }
-
-        // if(isBFinish){
-        //     console.log("B is Finish!");
-        //     //모델과 통신 코드 작성 (영서야 여기양)
-        //     Classification.IsClasificationLabel(bfinal);
-        // }
-
-        // if(isCFinish){
-        //     console.log("C is Finish!");
-        //     //모델과 통신 코드 작성 (영서야 여기양)
-        //     Classification.IsClasificationLabel(cfinal);
-        // }
-
-        // if(isDFinish){
-        //     console.log("D is Finish!");
-        //     //모델과 통신 코드 작성 (영서야 여기양)
-        //     Classification.IsClasificationLabel(dfinal);
-        // }
-
-        /*
-        aparts.map(x=>setAAngle(last => [...last, getAngle(x)]));
-        bparts.map(x=>setBAngle(last => [...last, getAngle(x)]));
-        cparts.map(x=>setCAngle(last => [...last, getAngle(x)]));
-        dparts.map(x=>setDAngle(last => [...last, getAngle(x)]));
-
-        console.log('angle atom----------------');
-        console.log(aAngleData);
-        console.log(bAngleData);
-        console.log(cAngleData);
-        console.log(dAngleData); 
-        */
 
     },[]);
 

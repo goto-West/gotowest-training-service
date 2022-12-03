@@ -34,8 +34,8 @@ export default function Choose() {
                 <div>
                   <Link to={`/check/${p.id}`} state={{p:p}} className='link'>
                     <div className='programContainer'>
-                        {/* <img className="pimg" src={require('../assets/lecimgsample.png')}></img> */}
-                        <img className="pimg" src={p.image}></img>
+                        <img className="pimg" src={require('../assets/lecimgsample.png')}></img>
+                        {/* <img className="pimg" src={p.image}></img> */}
                         <div className='pinfo'>
                           <p className='pn'>{p.name}</p>
                           <p className='pd'>설명: {p.detail}</p>
