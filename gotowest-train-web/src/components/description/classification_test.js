@@ -60,7 +60,7 @@ export default function classification_test(props) {
         </div>
 
         <div>
-            <button className='startBtn' onClick={(event) => onClick(event)}>
+            <button className='startBtn' onClick={onClick} >
                 다음
             </button>
         </div>

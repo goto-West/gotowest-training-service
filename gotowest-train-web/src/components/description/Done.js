@@ -250,20 +250,17 @@ export default function Done(props) {
 
         const response 
             = await axios('http://localhost:3001/classification', { angles: test, });
-        console.log(response.data);
+        //console.log(response.data);
 
         // score.js
         navigate("/score", {
             state: {
                 programDetail: props.programDetail,
-                poseResults : poseResults,
+                //poseResults : poseResults,
             },
         });
     };
 
-
-
-    
   return (
     <div>
         <audio
@@ -281,7 +278,7 @@ export default function Done(props) {
         </div>
 
         <div>
-            <button className='startBtn' onClick={(event) => onClick(event)}>
+            <button className='startBtn' onClick={onClick}>
                 다음
             </button>
         </div>

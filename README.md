@@ -19,6 +19,7 @@ npm i <br>
 cd .. <br>
 npm start<br><br> 
 클라이언트의 경우, http://localhost:3000 에 구동 <br/>
+instruction video : https://youtu.be/QlH5ZNUCT7I <br/>
 
 
 ## 구조 및 기능 정리
@@ -64,6 +65,10 @@ https://github.com/goto-West/pose-classification<br><br>
 
 3. 데이터셋 구성 <br>
 https://github.com/KangYoungSeo/movenet <br><br>
+
+
+
+## demo video
 
 
 
