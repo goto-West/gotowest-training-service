@@ -71,7 +71,6 @@ https://github.com/KangYoungSeo/movenet <br><br>
 ## demo video
 스마트 미러 내 실행 영상
 https://youtu.be/YKxZt40Zgl4
-https://youtu.be/YKxZt40Zgl4
 
 
 ## 팀원
