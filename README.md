@@ -69,7 +69,7 @@ https://github.com/KangYoungSeo/movenet <br><br>
 
 
 ## demo video
-
+스마트 미러 내 실행 영상
 
 
 
